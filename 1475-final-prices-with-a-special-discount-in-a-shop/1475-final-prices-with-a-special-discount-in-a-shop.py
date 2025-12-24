@@ -1,11 +1,13 @@
 class Solution(object):
     def finalPrices(self, prices):
         answer=list(prices)
+        stack=[]
         for i in range(len(prices)):
-            for j in range(i+1,len(prices)):
-                if j>i and prices[j]<=prices[i]:
-                    answer[i]-=prices[j]
-                    break
-        return answer     
+            while stack and answer[stack[-1]]>=prices[i]:
+                index=stack.pop()
+                answer[index]-=prices[i]
+            stack.append(i)  
+        return answer  
+            
 
         
