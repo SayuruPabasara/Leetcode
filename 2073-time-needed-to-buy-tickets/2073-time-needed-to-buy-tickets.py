@@ -1,13 +1,9 @@
 class Solution(object):
     def timeRequiredToBuy(self, tickets, k):
-        time=0
-        while tickets[k]>=0:
-            if tickets[0]>0:
-                tickets[0]-=1
-                time+=1
-                if tickets[0]==0:
-                    tickets.pop(0)
-                else:
-                    tickets.append(tickets.pop(0))
+        time = 0
+        for i in range(len(tickets)):
+            if i <= k:
+                time += min(tickets[i], tickets[k])
+            else:
+                time += min(tickets[i], tickets[k] - 1)
         return time
-        
