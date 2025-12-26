@@ -1,19 +1,16 @@
 class Solution(object):
     def countStudents(self, students, sandwiches):
-        count0=students.count(0)
-        count1=students.count(1)
-        for s in sandwiches:
-            if s==o:
-                if count0==0:
-                    break
-                else:
-                    count0-=1
+        st_set=set(students)
+        while sandwiches[0] in st_set: 
+            if sandwiches[0]==students[0]:
+                sandwiches.pop(0)
+                students.pop(0)
+                st_set=set(students)
             else:
-                if count1==0:
-                    break
-                else:
-                    count1-=1
-        return count0+count1
+                students.append(students.pop(0))
+        return len(students)
+
+
 
 
 
